@@ -75,7 +75,7 @@ class SalesOrderPaymentCapture implements \Magento\Framework\Event\ObserverInter
                 if (isset($charge["error"])) {
                     $this->logger->addDebug("settle error : ", $charge);
                     $this->messageManager->addError($charge["error"]);
-                    throw new \Magento\Framework\Exception\LocalizedException($charge["error"]);
+                    throw new \Magento\Framework\Exception\LocalizedException(__($charge["error"]));
                     return;
                 }
 
@@ -110,7 +110,7 @@ class SalesOrderPaymentCapture implements \Magento\Framework\Event\ObserverInter
             } else {
                 $this->logger->addDebug("Empty settle response from Reepay");
                 $this->messageManager->addError("Empty settle response from Reepay");
-                throw new \Magento\Framework\Exception\LocalizedException("Empty settle response from Reepay");
+                throw new \Magento\Framework\Exception\LocalizedException(__("Empty settle response from Reepay"));
             }
         }
     }
